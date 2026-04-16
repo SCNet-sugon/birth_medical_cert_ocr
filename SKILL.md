@@ -1,7 +1,7 @@
 ---
 name: birth_medical_cert_ocr
 description: 将图片中的文字、出生医学证明信息识别并提取出来。本技能应在用户需要 OCR 识别图片中的文字，或识别出生医学证明时使用。
-version: 1.0.2
+version: 1.0.3
 author: SCNet
 license: MIT
 tags:
@@ -11,7 +11,8 @@ tags:
   - 文字提取
 required_env_vars:
   - SCNET_API_KEY
-  - SCNET_API_BASE  # 可选，但有默认值
+optional_env_vars:
+  - SCNET_API_BASE
 primary_credential: SCNET_API_KEY
 dependencies:
   - python3
@@ -27,7 +28,7 @@ output: 结构化的 JSON 数据，包含识别结果和置信度
 
 ## 功能特性
 
-- **个人证照识别**：支持识别个人证件，出生医学证明证件核心信息。
+- **出生医学证明证件识别**：支持识别出生医学证明证件核心信息。
 
 
 ## 前置配置
@@ -87,9 +88,7 @@ Token 过期后调用会返回 401 或 403 错误。更新方法：重新申请 
 
 用户可以说：
 
-- “帮我识别这张身份证，图片在 /Users/name/Downloads/id.jpg”
-- “提取这张发票的信息，路径是 /Users/name/Downloads/fapiao.png”
-- “OCR 这个图片里的文字，图片在 /Users/name/Desktop/text.png”
+- “帮我识别这张出生医学证明证件，图片在 /Users/name/Downloads/id.jpg”
 
 AI 会根据 description 中的关键词自动触发本技能。
 
